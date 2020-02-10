@@ -4,24 +4,38 @@
     <title>Thèmes</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.20/datatables.min.css"/>
 </head>
 
-<body>
+<body style="margin-left: 10px; margin-right: 10px;">
 <a href="/">Retour à l'accueil</a>
 
 <h2>Liste des thèmes de jeux</h2>
 
-<table>
+<table id="themes" class="table table-striped table-bordered" style="width: 100%;">
+    <thead>
     <tr>
         <th>Id</th>
         <th>Nom</th>
     </tr>
-
+    </thead>
+    <tbody>
     <tr th:each="themeJeu : ${themeJeuList}">
         <td th:text="${themeJeu.id}">Id</td>
         <td th:text="${themeJeu.nom}">Nom</td>
     </tr>
+    </tbody>
 </table>
 
+
+<script type="text/javascript"
+        src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.20/datatables.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#themes').DataTable();
+    });
+</script>
 </body>
 </html>
