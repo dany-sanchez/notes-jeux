@@ -19,4 +19,45 @@ public class Note {
     @ManyToOne(targetEntity = Jeu.class)
     @JoinColumn(name = "id_jeu", referencedColumnName = "id", nullable = false)
     private Jeu jeu;
+
+    public Note() {
+    }
+
+    public Note(Integer note, String nomTesteur, Jeu jeu) {
+        this.note = note;
+        this.nomTesteur = nomTesteur;
+        this.jeu = jeu;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Integer getNote() {
+        return note;
+    }
+
+    public void setNote(Integer note) {
+        this.note = note;
+    }
+
+    public String getNomTesteur() {
+        return nomTesteur;
+    }
+
+    public void setNomTesteur(String nomTesteur) {
+        this.nomTesteur = nomTesteur;
+    }
+
+    public Jeu getJeu() {
+        return jeu;
+    }
+
+    public void setJeu(Jeu jeu) {
+        this.jeu = jeu;
+    }
 }
