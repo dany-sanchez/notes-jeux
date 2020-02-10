@@ -15,7 +15,7 @@ public class ThemeController {
     @Autowired
     private IThemeService themeService;
 
-    @GetMapping("showThemes")
+    @GetMapping("/showThemes")
     public String showThemes(Model model) {
         List<Theme> themes = themeService.findall();
 

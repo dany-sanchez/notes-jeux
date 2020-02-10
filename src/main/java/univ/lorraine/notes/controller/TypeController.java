@@ -15,7 +15,7 @@ public class TypeController {
     @Autowired
     private ITypeService typeService;
 
-    @GetMapping("showTypes")
+    @GetMapping("/showTypes")
     public String showTypes(Model model) {
         List<Type> types = typeService.findAll();
 
