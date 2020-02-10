@@ -11,6 +11,7 @@ public class Jeu {
     private Long id;
 
     @Basic(optional = false)
+    @Column(name = "nom_jeu")
     private String nom;
 
     @ManyToOne(targetEntity = TypeJeu.class)

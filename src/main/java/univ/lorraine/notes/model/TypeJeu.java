@@ -11,6 +11,7 @@ public class TypeJeu {
     private Long id;
 
     @Basic(optional = false)
+    @Column(name = "nom_type")
     private String nom;
 
     public TypeJeu() {

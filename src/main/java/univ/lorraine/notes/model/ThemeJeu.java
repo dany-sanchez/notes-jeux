@@ -11,6 +11,7 @@ public class ThemeJeu {
     private Long id;
 
     @Basic(optional = false)
+    @Column(name = "nom_theme")
     private String nom;
 
     public ThemeJeu() {

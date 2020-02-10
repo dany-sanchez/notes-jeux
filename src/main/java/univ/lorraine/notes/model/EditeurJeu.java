@@ -11,6 +11,7 @@ public class EditeurJeu {
     private Long id;
 
     @Basic(optional = false)
+    @Column(name = "nom_editeur")
     private String nom;
 
     public EditeurJeu() {
