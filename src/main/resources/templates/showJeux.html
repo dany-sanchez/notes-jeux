@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Éditeurs</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.20/datatables.min.css"/>
+</head>
+
+<body style="margin-left: 10px; margin-right: 10px;">
+<a href="/" class="btn btn-block">Retour à l'accueil</a>
+
+<h2>Liste des jeux</h2>
+
+<table id="jeux" class="table table-striped table-bordered" style="width: 100%;">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Nom</th>
+        <th>Type</th>
+        <th>Genre</th>
+        <th>Theme</th>
+        <th>Editeur</th>
+        <th>Age min</th>
+        <th>Nb joueurs min</th>
+        <th>Nb joueurs max</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="jeu : ${jeux}">
+        <td th:text="${jeu.id}">Id</td>
+        <td th:text="${jeu.nom}">Nom</td>
+        <td th:text="${jeu.type.nom}">Type</td>
+        <td th:text="${jeu.genre.nom}">Genre</td>
+        <td th:text="${jeu.theme.nom}">Theme</td>
+        <td th:text="${jeu.editeur.nom}">Editeur</td>
+        <td th:text="${jeu.ageMinimum}">Age min</td>
+        <td th:text="${jeu.nombreJoueursMinimum}">Nb joueurs min</td>
+        <td th:text="${jeu.nombreJoueursMaximum}">Nb joueurs max</td>
+    </tr>
+    </tbody>
+</table>
+
+<script type="text/javascript"
+        src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.20/datatables.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#jeux').DataTable();
+    });
+</script>
+</body>
+</html>
