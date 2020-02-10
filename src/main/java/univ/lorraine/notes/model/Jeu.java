@@ -14,21 +14,21 @@ public class Jeu {
     @Column(name = "nom_jeu")
     private String nom;
 
-    @ManyToOne(targetEntity = TypeJeu.class)
+    @ManyToOne(targetEntity = Type.class)
     @JoinColumn(name = "id_type", referencedColumnName = "id", nullable = false)
-    private TypeJeu typeJeu;
+    private Type type;
 
-    @ManyToOne(targetEntity = GenreJeu.class)
+    @ManyToOne(targetEntity = Genre.class)
     @JoinColumn(name = "id_genre", referencedColumnName = "id", nullable = false)
-    private GenreJeu genreJeu;
+    private Genre genre;
 
-    @ManyToOne(targetEntity = ThemeJeu.class)
+    @ManyToOne(targetEntity = Theme.class)
     @JoinColumn(name = "id_theme", referencedColumnName = "id", nullable = false)
-    private ThemeJeu themeJeu;
+    private Theme theme;
 
-    @ManyToOne(targetEntity = EditeurJeu.class)
+    @ManyToOne(targetEntity = Editeur.class)
     @JoinColumn(name = "id_editeur", referencedColumnName = "id", nullable = false)
-    private EditeurJeu editeurJeu;
+    private Editeur editeur;
 
     @Basic(optional = false)
     private Integer AgeMinimum;
