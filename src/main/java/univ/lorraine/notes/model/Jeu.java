@@ -1,6 +1,9 @@
 package univ.lorraine.notes.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @Table(name = "jeu")
@@ -38,6 +41,10 @@ public class Jeu {
 
     @Basic(optional = false)
     private Integer nombreJoueursMaximum;
+
+    @JsonBackReference
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "jeu")
+    private Collection<Note> notes;
 
     public Jeu() {
     }

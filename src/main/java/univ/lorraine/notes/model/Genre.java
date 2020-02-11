@@ -1,6 +1,9 @@
 package univ.lorraine.notes.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @Table(name = "genre_jeu")
@@ -14,11 +17,16 @@ public class Genre {
     @Column(name = "nom_genre")
     private String nom;
 
+    @JsonBackReference
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "genre")
+    private Collection<Jeu> jeux;
+
     public Genre() {
     }
 
-    public Genre(String nom) {
+    public Genre(String nom, Collection<Jeu> jeux) {
         this.nom = nom;
+        this.jeux = jeux;
     }
 
     public Long getId() {
@@ -35,5 +43,13 @@ public class Genre {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public Collection<Jeu> getJeux() {
+        return jeux;
+    }
+
+    public void setJeux(Collection<Jeu> jeux) {
+        this.jeux = jeux;
     }
 }
