@@ -8,13 +8,24 @@
           href="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.20/datatables.min.css"/>
 </head>
 <body>
-<ul>
-    <li><a href="showJeux">Afficher la liste des jeux</a></li>
-    <li><a href="showEditeurs">Afficher la liste des éditeurs</a></li>
-    <li><a href="showGenres">Afficher la liste des genres</a></li>
-    <li><a href="showThemes">Afficher la liste des thèmes</a></li>
-    <li><a href="showTypes">Afficher la liste des types</a></li>
-</ul>
+
+<div class="container-fluid">
+    <div class="row" style="height: 100vh;">
+        <div class="col-2 bg-light">
+            <h2>Menu des pages</h2>
+            <ul class="nav flex-column flex-nowrap overflow-hidden">
+                <li class="nav-item"><a class="nav-link" href="showJeux">Afficher la liste des jeux</a></li>
+                <li class="nav-item"><a class="nav-link" href="showEditeurs">Afficher la liste des éditeurs</a></li>
+                <li class="nav-item"><a class="nav-link" href="showGenres">Afficher la liste des genres</a></li>
+                <li class="nav-item"><a class="nav-link" href="showThemes">Afficher la liste des thèmes</a></li>
+                <li class="nav-item"><a class="nav-link" href="showTypes">Afficher la liste des types</a></li>
+            </ul>
+        </div>
+        <div class="col-auto">
+            <h1>Filtres sur les jeux</h1>
+        </div>
+    </div>
+</div>
 
 <script type="text/javascript"
         src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.20/datatables.min.js"></script>
