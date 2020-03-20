@@ -31,9 +31,9 @@
     <tr th:each="jeu : ${jeux}">
         <td th:text="${jeu.id}">Id</td>
         <td th:text="${jeu.nom}">Nom</td>
-        <td th:text="${jeu.type.nom}">Type</td>
-        <td th:text="${jeu.genre.nom}">Genre</td>
-        <td th:text="${jeu.theme.nom}">Thème</td>
+        <td th:text="${jeu.type?.nom}">Type</td>
+        <td th:text="${jeu.genre?.nom}">Genre</td>
+        <td th:text="${jeu.theme?.nom}">Thème</td>
         <td th:text="${jeu.editeur.nom}">Éditeur</td>
         <td th:text="${jeu.ageMinimum}">Âge min</td>
         <td th:text="${jeu.nombreJoueursMinimum}">Nb joueurs min</td>

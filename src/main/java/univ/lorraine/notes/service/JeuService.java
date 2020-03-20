@@ -19,4 +19,11 @@ public class JeuService implements IJeuService {
         return (List<Jeu>) jeuRepository.findAll();
     }
 
+    @Override
+    public void delete(Jeu jeu){
+        jeuRepository.delete(jeu);
+    }
+
+    @Override
+    public Jeu save(Jeu jeu) { return jeuRepository.save(jeu); }
 }

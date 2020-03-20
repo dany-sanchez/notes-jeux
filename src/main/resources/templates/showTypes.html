@@ -19,12 +19,14 @@
     <tr>
         <th>Id</th>
         <th>Nom</th>
+        <th>Actions</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="type : ${types}">
         <td th:text="${type.id}">Id</td>
         <td th:text="${type.nom}">Nom</td>
+        <td>Actions</td>
     </tr>
     </tbody>
 </table>
@@ -34,7 +36,19 @@
 
 <script>
     $(document).ready(function () {
-        $('#types').DataTable();
+        $('#types').DataTable(
+            {
+                "columns": [
+                    {"data": "id"},
+                    {"data": "nom"},
+                    {
+                        render: function (data, type, row) {
+                            return "<a href='/updateType/"+row.id+"'>Modifier</a>&nbsp;<a href='/deleteType/"+row.id+"'>Supprimer</a>";
+                        }
+                    }
+                ]
+            }
+        );
     });
 </script>
 </body>

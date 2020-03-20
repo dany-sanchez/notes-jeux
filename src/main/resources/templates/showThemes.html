@@ -19,12 +19,14 @@
     <tr>
         <th>Id</th>
         <th>Nom</th>
+        <th>Actions</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="theme : ${themes}">
         <td th:text="${theme.id}">Id</td>
         <td th:text="${theme.nom}">Nom</td>
+        <td>Actions</td>
     </tr>
     </tbody>
 </table>
@@ -34,7 +36,19 @@
 
 <script>
     $(document).ready(function () {
-        $('#themes').DataTable();
+        $('#themes').DataTable(
+            {
+                "columns": [
+                    {"data": "id"},
+                    {"data": "nom"},
+                    {
+                        render: function (data, type, row) {
+                            return "<a href='/updateTheme/"+row.id+"'>Modifier</a>&nbsp;<a href='/deleteTheme/"+row.id+"'>Supprimer</a>";
+                        }
+                    }
+                ]
+            }
+        );
     });
 </script>
 </body>

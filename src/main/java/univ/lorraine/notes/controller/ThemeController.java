@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import univ.lorraine.notes.model.Genre;
 import univ.lorraine.notes.model.Theme;
@@ -29,7 +30,7 @@ public class ThemeController {
     }
 
     @GetMapping("/addTheme")
-    public String showSignUpForm(Theme theme) {
+    public String showAddThemeForm(Theme theme) {
         return "addTheme";
     }
 
@@ -43,6 +44,35 @@ public class ThemeController {
 
         model.addAttribute("themes", themeService.findall());
 
+        return "showThemes";
+    }
+
+
+    @GetMapping("/updateTheme/{id}")
+    public String showUpdateThemeForm(@PathVariable("id") int id, Model model) {
+        Theme theme = themeService.findById(id);
+
+        model.addAttribute("theme", theme);
+        return "updateTheme";
+    }
+
+    @PostMapping("/updateTheme/{id}")
+    public String updateGenre(@PathVariable("id") long id, @Valid Theme theme,
+                              BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            theme.setId(id);
+            return "updateTheme";
+        }
+        themeService.save(theme);
+        model.addAttribute("themes", themeService.findall());
+        return "showThemes";
+    }
+
+    @GetMapping("/deleteTheme/{id}")
+    public String deleteTheme(@PathVariable("id") int id, Model model) {
+        Theme theme=themeService.findById(id);
+        themeService.delete(theme);
+        model.addAttribute("themes", themeService.findall());
         return "showThemes";
     }
 }

@@ -8,4 +8,7 @@ public interface IJeuService {
 
     List<Jeu> findAll();
 
+    Jeu save(Jeu jeu);
+
+    void delete(Jeu jeu);
 }

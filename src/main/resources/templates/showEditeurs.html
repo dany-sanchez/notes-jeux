@@ -19,12 +19,14 @@
     <tr>
         <th>Id</th>
         <th>Nom</th>
+        <th>Actions</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="editeur : ${editeurs}">
         <td th:text="${editeur.id}">Id</td>
         <td th:text="${editeur.nom}">Nom</td>
+        <td>Actions</td>
     </tr>
     </tbody>
 </table>
@@ -34,7 +36,19 @@
 
 <script>
     $(document).ready(function () {
-        $('#editeurs').DataTable();
+        $('#editeurs').DataTable(
+            {
+                "columns": [
+                    {"data": "id"},
+                    {"data": "nom"},
+                    {
+                        render: function (data, type, row) {
+                            return "<a href='/updateEditeur/"+row.id+"'>Modifier</a>&nbsp;<a href='/deleteEditeur/"+row.id+"'>Supprimer</a>";
+                        }
+                    }
+                ]
+            }
+        );
     });
 </script>
 </body>

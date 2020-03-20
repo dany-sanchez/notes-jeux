@@ -9,4 +9,8 @@ public interface IEditeurService {
     List<Editeur> findAll();
 
     Editeur save(Editeur editeur);
+
+    Editeur findById(int id);
+
+    void delete(Editeur editeur);
 }
