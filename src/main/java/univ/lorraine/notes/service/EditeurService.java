@@ -17,4 +17,7 @@ public class EditeurService implements IEditeurService {
     public List<Editeur> findAll() {
         return (List<Editeur>) editeurRepository.findAll();
     }
+
+    @Override
+    public Editeur save(Editeur editeur) { return (Editeur) editeurRepository.save(editeur);}
 }

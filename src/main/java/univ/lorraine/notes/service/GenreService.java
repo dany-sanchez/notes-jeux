@@ -2,6 +2,7 @@ package univ.lorraine.notes.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import univ.lorraine.notes.model.Editeur;
 import univ.lorraine.notes.model.Genre;
 import univ.lorraine.notes.repository.GenreRepository;
 
@@ -17,4 +18,7 @@ public class GenreService implements IGenreService {
     public List<Genre> findAll() {
         return (List<Genre>) genreRepository.findAll();
     }
+
+    @Override
+    public Genre save(Genre genre) { return (Genre) genreRepository.save(genre);}
 }

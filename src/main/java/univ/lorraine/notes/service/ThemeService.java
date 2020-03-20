@@ -2,6 +2,7 @@ package univ.lorraine.notes.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import univ.lorraine.notes.model.Genre;
 import univ.lorraine.notes.model.Theme;
 import univ.lorraine.notes.repository.ThemeRepository;
 
@@ -17,4 +18,7 @@ public class ThemeService implements IThemeService {
     public List<Theme> findall() {
         return (List<Theme>) themeRepository.findAll();
     }
+
+    @Override
+    public Theme save(Theme theme) { return (Theme) themeRepository.save(theme);}
 }

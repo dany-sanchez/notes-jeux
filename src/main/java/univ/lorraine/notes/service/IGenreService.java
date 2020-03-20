@@ -7,4 +7,6 @@ import java.util.List;
 public interface IGenreService {
 
     List<Genre> findAll();
+
+    Genre save(Genre genre);
 }

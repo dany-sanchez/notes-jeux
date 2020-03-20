@@ -7,4 +7,6 @@ import java.util.List;
 public interface IEditeurService {
 
     List<Editeur> findAll();
+
+    Editeur save(Editeur editeur);
 }

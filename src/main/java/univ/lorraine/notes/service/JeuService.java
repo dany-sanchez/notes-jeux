@@ -1,8 +1,9 @@
 package univ.lorraine.notes.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
-import univ.lorraine.notes.model.Jeu;
+import univ.lorraine.notes.model.*;
 import univ.lorraine.notes.repository.JeuRepository;
 
 import java.util.List;
@@ -17,4 +18,5 @@ public class JeuService implements IJeuService {
     public List<Jeu> findAll() {
         return (List<Jeu>) jeuRepository.findAll();
     }
+
 }
