@@ -52,4 +52,11 @@ public class Type {
     public void setJeux(Collection<Jeu> jeux) {
         this.jeux = jeux;
     }
+
+    @Override
+    public String toString() {
+        return "Type{" +
+                "nom='" + nom + '\'' +
+                '}';
+    }
 }

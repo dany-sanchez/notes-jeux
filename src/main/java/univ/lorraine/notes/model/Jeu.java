@@ -131,4 +131,25 @@ public class Jeu {
     public void setNombreJoueursMaximum(Integer nombreJoueursMaximum) {
         this.nombreJoueursMaximum = nombreJoueursMaximum;
     }
+
+    public Collection<Note> getNotes() {
+        return notes;
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "Jeu{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", type=" + type +
+                ", genre=" + genre +
+                ", theme=" + theme +
+                ", editeur=" + editeur +
+                ", ageMinimum=" + ageMinimum +
+                ", nombreJoueursMinimum=" + nombreJoueursMinimum +
+                ", nombreJoueursMaximum=" + nombreJoueursMaximum +
+                '}';
+    }
 }

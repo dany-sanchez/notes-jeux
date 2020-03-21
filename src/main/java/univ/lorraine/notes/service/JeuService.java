@@ -26,4 +26,9 @@ public class JeuService implements IJeuService {
 
     @Override
     public Jeu save(Jeu jeu) { return jeuRepository.save(jeu); }
+
+    @Override
+    public List<Jeu> filter(Type type, Genre genre, Theme theme, Integer NombreJoueursMinimum, Integer NombreJoueursMaximum, Integer AgeMinimum, Editeur editeur) {
+        return jeuRepository.findJeusByTypeAndGenreAndThemeAndNombreJoueursMinimumAndNombreJoueursMaximumAndAgeMinimumAndEditeur(type, genre, theme, NombreJoueursMinimum, NombreJoueursMaximum, AgeMinimum, editeur);
+    }
 }

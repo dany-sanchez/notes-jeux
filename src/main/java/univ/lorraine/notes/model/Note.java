@@ -60,4 +60,12 @@ public class Note {
     public void setJeu(Jeu jeu) {
         this.jeu = jeu;
     }
+
+    @Override
+    public String toString() {
+        return "Note{" +
+                "note=" + note +
+                ", nomTesteur='" + nomTesteur + '\'' +
+                '}';
+    }
 }

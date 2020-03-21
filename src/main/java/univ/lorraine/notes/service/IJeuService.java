@@ -11,4 +11,7 @@ public interface IJeuService {
     Jeu save(Jeu jeu);
 
     void delete(Jeu jeu);
+
+    List<Jeu> filter(Type type, Genre genre, Theme theme, Integer NombreJoueursMinimum, Integer NombreJoueursMaximum, Integer AgeMinimum, Editeur editeur);
+
 }

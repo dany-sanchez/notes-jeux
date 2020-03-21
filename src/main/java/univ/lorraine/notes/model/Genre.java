@@ -52,4 +52,11 @@ public class Genre {
     public void setJeux(Collection<Jeu> jeux) {
         this.jeux = jeux;
     }
+
+    @Override
+    public String toString() {
+        return "Genre{" +
+                "nom='" + nom + '\'' +
+                '}';
+    }
 }

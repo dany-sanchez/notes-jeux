@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html">
 <head>
     <title>Accueil</title>
     <meta charset="UTF-8"/>
@@ -23,6 +23,62 @@
         </div>
         <div class="col-auto">
             <h1>Filtres sur les jeux</h1>
+            <div>
+                <form action="#" th:action="@{/filteredList}" th:object="${jeu}" method="post">
+                    <div>
+                        <label for="type">Type</label>
+                        <select th:field="*{type}" id="type">
+                            <option value="">-</option>
+                            <option th:each="type: ${types}" th:value="${type.id}" th:text="${type.nom}"></option>
+                        </select>
+                        <span th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></span>
+                    </div>
+                    <div>
+                        <label for="genre">Genre</label>
+                        <select th:field="*{genre}" id="genre">
+                            <option value="">-</option>
+                            <option th:each="genre: ${genres}" th:value="${genre.id}" th:text="${genre.nom}"></option>
+                        </select>
+                        <span th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}"></span>
+                    </div>
+                    <div>
+                        <label for="theme">Thème</label>
+                        <select th:field="*{theme}" id="theme">
+                            <option value="">-</option>
+                            <option th:each="theme: ${themes}" th:value="${theme.id}" th:text="${theme.nom}"></option>
+                        </select>
+                        <span th:if="${#fields.hasErrors('theme')}" th:errors="*{theme}"></span>
+                    </div>
+                    <div>
+                        <label for="nombreJoueursMinimum">Nombre de joueurs minimum</label>
+                        <input type="number" th:field="*{nombreJoueursMinimum}" id="nombreJoueursMinimum"
+                               placeholder="Nombre de joueurs minimum">
+                        <span th:if="${#fields.hasErrors('nombreJoueursMinimum')}"
+                              th:errors="*{nombreJoueursMinimum}"></span>
+                    </div>
+                    <div>
+                        <label for="nombreJoueursMinimum">Nombre de joueurs maximum</label>
+                        <input type="number" th:field="*{nombreJoueursMaximum}" id="nombreJoueursMaximum"
+                               placeholder="Nombre de joueurs maximum">
+                        <span th:if="${#fields.hasErrors('nombreJoueursMaximum')}"
+                              th:errors="*{nombreJoueursMaximum}"></span>
+                    </div>
+                    <div>
+                        <label for="ageMinimum">Âge minimum conseillé</label>
+                        <input type="number" th:field="*{ageMinimum}" id="ageMinimum" placeholder="Âge minimum conseillé">
+                        <span th:if="${#fields.hasErrors('ageMinimum')}" th:errors="*{ageMinimum}"></span>
+                    </div>
+                    <div>
+                        <label for="editeur">Editeur</label>
+                        <select th:field="*{editeur}" id="editeur">
+                            <option value="">-</option>
+                            <option th:each="editeur: ${editeurs}" th:value="${editeur.id}" th:text="${editeur.nom}"></option>
+                        </select>
+                        <span th:if="${#fields.hasErrors('editeur')}" th:errors="*{editeur}"></span>
+                    </div>
+                    <input type="submit" value="Filtrer">
+                </form>
+            </div>
         </div>
     </div>
 </div>

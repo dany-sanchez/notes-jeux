@@ -52,4 +52,11 @@ public class Theme {
     public void setJeux(Collection<Jeu> jeux) {
         this.jeux = jeux;
     }
+
+    @Override
+    public String toString() {
+        return "Theme{" +
+                "nom='" + nom + '\'' +
+                '}';
+    }
 }
