@@ -36,11 +36,13 @@ public class ThemeController {
 
     @PostMapping("/addTheme")
     public String addTheme(@Valid Theme theme, BindingResult result, Model model) {
-        if (result.hasErrors()) {
+        if (result.hasErrors() || theme.getNom().trim().length() == 0) {
+            model.addAttribute("Message","Erreur dans le formulaire !");
             return "addTheme";
         }
 
         themeService.save(theme);
+        model.addAttribute("Message","Ajouté avec succès !");
 
         model.addAttribute("themes", themeService.findall());
 
@@ -59,13 +61,14 @@ public class ThemeController {
     @PostMapping("/updateTheme/{id}")
     public String updateGenre(@PathVariable("id") long id, @Valid Theme theme,
                               BindingResult result, Model model) {
-        if (result.hasErrors()) {
+        if (result.hasErrors() || theme.getNom().trim().length() == 0) {
+            model.addAttribute("Message","Erreur dans le formulaire !");
             theme.setId(id);
             return "updateTheme";
         }
         themeService.save(theme);
-        model.addAttribute("themes", themeService.findall());
-        return "showThemes";
+        model.addAttribute("Message","Edité avec succès !");
+        return "updateTheme";
     }
 
     @GetMapping("/deleteTheme/{id}")
@@ -73,6 +76,7 @@ public class ThemeController {
         Theme theme=themeService.findById(id);
         themeService.delete(theme);
         model.addAttribute("themes", themeService.findall());
+        model.addAttribute("Message","Supprimé avec succès !");
         return "showThemes";
     }
 }

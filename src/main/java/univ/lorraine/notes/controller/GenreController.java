@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import univ.lorraine.notes.model.Editeur;
 import univ.lorraine.notes.model.Genre;
 import univ.lorraine.notes.service.IGenreService;
@@ -36,15 +37,14 @@ public class GenreController {
 
     @PostMapping("/addGenre")
     public String addGenre(@Valid Genre genre, BindingResult result, Model model) {
-        if (result.hasErrors()) {
+        if (result.hasErrors() || genre.getNom().trim().length() == 0) {
+            model.addAttribute("Message","Erreur dans le formulaire !");
             return "addGenre";
         }
 
         genreService.save(genre);
-
-        model.addAttribute("genres", genreService.findAll());
-
-        return "showGenres";
+        model.addAttribute("Message","Ajouté avec succès !");
+        return "addGenre";
     }
 
     @GetMapping("/updateGenre/{id}")
@@ -58,13 +58,15 @@ public class GenreController {
     @PostMapping("/updateGenre/{id}")
     public String updateGenre(@PathVariable("id") long id, @Valid Genre genre,
                                 BindingResult result, Model model) {
-        if (result.hasErrors()) {
+        if (result.hasErrors() || genre.getNom().trim().length() == 0) {
+            model.addAttribute("Message","Erreur dans le formulaire !");
             genre.setId(id);
             return "updateGenre";
         }
         genreService.save(genre);
         model.addAttribute("genres", genreService.findAll());
-        return "showGenres";
+        model.addAttribute("Message","Edité avec succès !");
+        return "updateGenre";
     }
 
     @GetMapping("/deleteGenre/{id}")
@@ -72,6 +74,7 @@ public class GenreController {
         Genre genre=genreService.findById(id);
         genreService.delete(genre);
         model.addAttribute("genres", genreService.findAll());
+        model.addAttribute("Message","Supprimé avec succès !");
         return "showGenres";
     }
 }

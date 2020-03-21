@@ -37,15 +37,14 @@ public class TypeController {
 
     @PostMapping("/addType")
     public String addTheme(@Valid Type type, BindingResult result, Model model) {
-        if (result.hasErrors()) {
+        if (result.hasErrors() || type.getNom().trim().length() == 0) {
+            model.addAttribute("Message","Erreur dans le formulaire !");
             return "addType";
         }
 
         typeService.save(type);
-
-        model.addAttribute("types", typeService.findAll());
-
-        return "showTypes";
+        model.addAttribute("Message","Ajouté avec succès !");
+        return "addType";
     }
 
     @GetMapping("/updateType/{id}")
@@ -59,13 +58,14 @@ public class TypeController {
     @PostMapping("/updateType/{id}")
     public String updateType(@PathVariable("id") long id, @Valid Type type,
                               BindingResult result, Model model) {
-        if (result.hasErrors()) {
+        if (result.hasErrors() || type.getNom().trim().length() == 0) {
+            model.addAttribute("Message","Erreur dans le formulaire !");
             type.setId(id);
             return "updateType";
         }
         typeService.save(type);
-        model.addAttribute("types", typeService.findAll());
-        return "showTypes";
+        model.addAttribute("Message","Edité avec succès !");
+        return "updateType";
     }
 
     @GetMapping("/deleteType/{id}")
@@ -73,6 +73,7 @@ public class TypeController {
         Type type=typeService.findById(id);
         typeService.delete(type);
         model.addAttribute("types", typeService.findAll());
+        model.addAttribute("Message","Supprimé avec succès !");
         return "showTypes";
     }
 }

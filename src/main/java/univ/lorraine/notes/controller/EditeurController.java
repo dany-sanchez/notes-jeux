@@ -36,12 +36,13 @@ public class EditeurController {
 
     @PostMapping("/addEditeur")
     public String addEditeur(@Valid Editeur editeur, BindingResult result, Model model) {
-        if (result.hasErrors()) {
+        if (result.hasErrors() || editeur.getNom().trim().length() == 0) {
+            model.addAttribute("Message","Erreur dans le formulaire !");
             return "addEditeur";
         }
         editeurService.save(editeur);
-        model.addAttribute("editeurs", editeurService.findAll());
-        return "showEditeurs";
+        model.addAttribute("Message","Ajouté avec succès !");
+        return "addEditeur";
     }
 
     @GetMapping("/updateEditeur/{id}")
@@ -55,13 +56,15 @@ public class EditeurController {
     @PostMapping("/updateEditeur/{id}")
     public String updateEditeur(@PathVariable("id") long id, @Valid Editeur editeur,
                                 BindingResult result, Model model) {
-        if (result.hasErrors()) {
+        if (result.hasErrors() || editeur.getNom().trim().length() == 0) {
+            model.addAttribute("Message","Erreur dans le formulaire !");
             editeur.setId(id);
             return "updateEditeur";
         }
+        model.addAttribute("Message","Edité avec succès !");
         editeurService.save(editeur);
-        model.addAttribute("editeurs", editeurService.findAll());
-        return "showEditeurs";
+
+        return "updateEditeur";
     }
 
     @GetMapping("/deleteEditeur/{id}")
@@ -69,6 +72,7 @@ public class EditeurController {
         Editeur editeur=editeurService.findById(id);
         editeurService.delete(editeur);
         model.addAttribute("editeurs", editeurService.findAll());
+        model.addAttribute("Message","Supprimé avec succès !");
         return "showEditeurs";
     }
 }

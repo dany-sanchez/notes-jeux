@@ -10,6 +10,7 @@
 <body>
 
 <div class="container-fluid">
+    <div th:if="${Message}" th:text="${Message}"></div>
     <div class="row" style="height: 100vh;">
         <form action="#" th:action="@{/addEditeur}" th:object="${editeur}" method="post">
             <label for="name">Nom</label>
