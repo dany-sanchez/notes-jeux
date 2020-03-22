@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 @Entity
 @Table(name = "jeu")
@@ -136,7 +138,15 @@ public class Jeu {
         return notes;
     }
 
+    public Collection<Note> getNotesSort() {
+        Collections.sort((List<Note>)notes);
+        return notes;
+    }
 
+    public Collection<Note> getNotesReverse() {
+        Collections.sort((List<Note>)notes,Collections.reverseOrder());
+        return notes;
+    }
 
     @Override
     public String toString() {

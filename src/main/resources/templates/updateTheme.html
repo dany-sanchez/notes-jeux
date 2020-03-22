@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Accueil</title>
+    <title>Modifier un thème</title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" type="text/css"
@@ -11,6 +11,7 @@
 
 <div class="container-fluid">
     <div th:if="${Message}" th:text="${Message}"></div>
+    <h1 th:text="'Modifier '+${theme.nom}"></h1>
     <div class="row" style="height: 100vh;">
         <form action="#"
               th:action="@{/updateTheme/{id}(id=${theme.id})}"

@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Accueil</title>
+    <title>Modifier un genre</title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" type="text/css"
-          href="https://cdn.dat atables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.20/datatables.min.css"/>
+          href="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.20/datatables.min.css"/>
 </head>
 <body>
 
 <div class="container-fluid">
     <div th:if="${Message}" th:text="${Message}"></div>
+    <h1 th:text="'Modifier '+${genre.nom}"></h1>
     <div class="row" style="height: 100vh;">
         <form action="#"
               th:action="@{/updateGenre/{id}(id=${genre.id})}"

@@ -51,15 +51,9 @@ public class HomeController {
             return "index";
         }
         model.addAttribute("Message", "Edité avec succès !");
-        /*System.out.println(jeu.toString());
-        model.addAttribute("jeux", new ArrayList<Jeu>());*/
-           List<Jeu> jeux = jeuService.filter(jeu.getType(), jeu.getGenre(), jeu.getTheme(), jeu.getNombreJoueursMinimum(),
-                    jeu.getNombreJoueursMaximum(), jeu.getAgeMinimum(), jeu.getEditeur());
-            model.addAttribute("jeux",jeux);
-
-        /*for (Jeu jeuANoter: jeux) {
-            jeuANoter;
-        }*/
+        List<Jeu> jeux = jeuService.filter(jeu.getType(), jeu.getGenre(), jeu.getTheme(), jeu.getNombreJoueursMinimum(),
+                jeu.getNombreJoueursMaximum(), jeu.getAgeMinimum(), jeu.getEditeur());
+        model.addAttribute("jeux", jeux);
         return "filteredList";
     }
 }

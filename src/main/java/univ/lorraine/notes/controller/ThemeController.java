@@ -44,9 +44,7 @@ public class ThemeController {
         themeService.save(theme);
         model.addAttribute("Message","Ajouté avec succès !");
 
-        model.addAttribute("themes", themeService.findall());
-
-        return "showThemes";
+        return "addTheme";
     }
 
 

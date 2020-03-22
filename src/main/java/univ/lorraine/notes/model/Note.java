@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "note_jeu")
-public class Note {
+public class Note implements Comparable<Note>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -67,5 +67,13 @@ public class Note {
                 "note=" + note +
                 ", nomTesteur='" + nomTesteur + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Note o) {
+        if (getNote() == null || o.getNote() == null) {
+            return 0;
+        }
+        return getNote().compareTo(o.getNote());
     }
 }
